@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box" style="width: 1500px">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                <form name="form" action="/portal/course/removeAll" method="post">
+
+                    <table class="tb" th:border="1">
+                        <thead>
+                        <tr>
+                            <th>周一</th>
+                            <th>周二</th>
+                            <th>周三</th>
+                            <th>周四</th>
+                            <th>周五</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr style="height: 30px">
+                            <td th:text="${admin.mcourse1}"></td>
+                            <td th:text="${admin.tcourse1}"></td>
+                            <td th:text="${admin.wcourse1}"></td>
+                            <td th:text="${admin.thcourse1}"></td>
+                            <td th:text="${admin.fcourse1}"></td>
+                        </tr>
+                        <tr style="height: 30px">
+                            <td th:text="${admin.mcourse2}"></td>
+                            <td th:text="${admin.tcourse2}"></td>
+                            <td th:text="${admin.wcourse2}"></td>
+                            <td th:text="${admin.thcourse2}"></td>
+                            <td th:text="${admin.fcourse2}"></td>
+                        </tr>
+                        <tr style="height: 30px">
+                            <td th:text="${admin.mcourse3}"></td>
+                            <td th:text="${admin.tcourse3}"></td>
+                            <td th:text="${admin.wcourse3}"></td>
+                            <td th:text="${admin.thcourse3}"></td>
+                            <td th:text="${admin.fcourse3}"></td>
+                        </tr>
+                        <tr style="height: 30px">
+                            <td th:text="${admin.mcourse4}"></td>
+                            <td th:text="${admin.tcourse4}"></td>
+                            <td th:text="${admin.wcourse4}"></td>
+                            <td th:text="${admin.thcourse4}"></td>
+                            <td th:text="${admin.fcourse4}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <br style="background-color: #32323a"/>
+    </div>
+</body>
+</html>

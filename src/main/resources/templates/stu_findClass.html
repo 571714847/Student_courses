@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                    <table style="width: 500px;height: 300px" th:border="0">
+                        <thead>
+                        <tr>
+                            <td>班号</td>
+                            <td th:text="${classes.classid}"></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>班级名称</td>
+                            <td th:text="${classes.classname}"></td>
+
+                        </tr>
+                        <tr>
+                            <td>年级</td>
+                            <td th:text="${classes.grade}"></td>
+                        </tr>
+                        <tr>
+                            <td>班级专业</td>
+                            <td><a th:text="${classes.major}"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

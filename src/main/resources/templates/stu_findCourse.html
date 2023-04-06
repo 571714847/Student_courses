@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box" style="width: 1500px">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                <form name="form" action="/portal/course/removeAll" method="post">
+
+                    <table class="tb" th:border="1">
+                        <thead>
+                        <tr>
+                            <td>班级:<p th:text="${classes.classname}"></p></td>
+                            <td>年级:<p th:text="${classes.grade}"></p></td>
+                            <td><a th:href="@{/student/addStudent/} + ${classes.classid}">请假</a></td>
+                            <td><a href="/student/deleteCheck">销假</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>1-2&ensp;8:15-9:50</td>
+                            <td>3-4&ensp;10:05-11:40</td>
+                            <td>5-6&ensp;14:05-15:35</td>
+                            <td>7-8&ensp;15:50-17:00</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>周一</td>
+                            <td><a th:text="${classes.mcourse1}" th:href="@{/student/getCheck/} + ${classes.mcourse1}"></a></td>
+                            <td><a th:text="${classes.mcourse2}" th:href="@{/student/getCheck/} + ${classes.mcourse2}"></a></td>
+                            <td><a th:text="${classes.mcourse3}" th:href="@{/student/getCheck/} + ${classes.mcourse4}"></a></td>
+                            <td><a th:text="${classes.mcourse4}" th:href="@{/student/getCheck/} + ${classes.mcourse4}"></a></td>
+                        </tr>
+                        <tr>
+                            <td>周二</td>
+                            <td><a th:text="${classes.tcourse1}" th:href="@{/student/getCheck/} + ${classes.tcourse1}"></a></td>
+                            <td><a th:text="${classes.tcourse2}" th:href="@{/student/getCheck/} + ${classes.tcourse2}"></a></td>
+                            <td><a th:text="${classes.tcourse3}" th:href="@{/student/getCheck/} + ${classes.tcourse3}"></a></td>
+                            <td><a th:text="${classes.tcourse4}" th:href="@{/student/getCheck/} + ${classes.tcourse4}"></a></td>
+                        </tr>
+                        <tr>
+                            <td>周三</td>
+                            <td><a th:text="${classes.wcourse1}" th:href="@{/student/getCheck/} + ${classes.wcourse1}"></a></td>
+                            <td><a th:text="${classes.wcourse2}" th:href="@{/student/getCheck/} + ${classes.wcourse2}"></a></td>
+                            <td><a th:text="${classes.wcourse3}" th:href="@{/student/getCheck/} + ${classes.wcourse3}"></a></td>
+                            <td><a th:text="${classes.wcourse4}" th:href="@{/student/getCheck/} + ${classes.wcourse4}"></a></td>
+                        </tr>
+                        <tr>
+                            <td>周四</td>
+                            <td><a th:text="${classes.thcourse1}" th:href="@{/student/getCheck/} + ${classes.thcourse1}"></a></td>
+                            <td><a th:text="${classes.thcourse2}" th:href="@{/student/getCheck/} + ${classes.thcourse2}"></a></td>
+                            <td><a th:text="${classes.thcourse3}" th:href="@{/student/getCheck/} + ${classes.thcourse3}"></a></td>
+                            <td><a th:text="${classes.thcourse4}" th:href="@{/student/getCheck/} + ${classes.thcourse4}"></a></td>
+                        </tr>
+                        <tr>
+                            <td>周五</td>
+                            <td><a th:text="${classes.fcourse1}" th:href="@{/student/getCheck/} + ${classes.fcourse1}"></a></td>
+                            <td><a th:text="${classes.fcourse2}" th:href="@{/student/getCheck/} + ${classes.fcourse2}"></a></td>
+                            <td><a th:text="${classes.fcourse3}" th:href="@{/student/getCheck/} + ${classes.fcourse3}"></a></td>
+                            <td><a th:text="${classes.fcourse4}" th:href="@{/student/getCheck/} + ${classes.fcourse4}"></a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <br style="background-color: #32323a"/>
+    </div>
+</body>
+</html>

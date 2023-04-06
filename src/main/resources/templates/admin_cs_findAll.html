@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box" style="width: 1500px">
+            <div>
+                <form name="form" action="/portal/course/removeAll" method="post">
+                    <table class="tb" th:border="1">
+                        <thead>
+                        <tr>
+                            <th>班级编号</th>
+                            <th>班级名称</th>
+                            <th>班级年段</th>
+                            <th>班级专业</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="admin: ${pageInfo.list}">
+                            <td th:text="${admin.classid}"></td>
+                            <td th:text="${admin.classname}"></td>
+                            <td th:text="${admin.grade}"></td>
+                            <td th:text="${admin.major}"></td>
+                            <td>
+                                <a th:href="@{/admin/getClassesCourse/} + ${admin.classid}">查询</a>
+                                <a th:href="@{/admin/getClasses/} + ${admin.classid}">编辑</a>
+                                <a th:href="@{/admin/delClasses/} + ${admin.classid}">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <br style="background-color: #32323a"/>
+        <div>
+            <ul class="paging">
+                <li style="float: left; margin-left: 10px;color: black;display: flex">
+                    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,
+                        总 <span th:text="${pageInfo.pages}"></span> 页,
+                        共<span th:text="${pageInfo.total}"></span> 条记录
+                    </p>
+                    <br>
+                    <a th:href="@{/admin/getAllClasses}">首页</a>
+                    <a th:href="@{/admin/getAllClasses(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                    <a th:href="@{/admin/getAllClasses(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                    <a th:href="@{/admin/getAllClasses(pageNum=${pageInfo.pages})}">尾页</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

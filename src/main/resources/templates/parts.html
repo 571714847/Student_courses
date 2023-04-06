@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/teacher/getStudent/}+${teacher.cname}"><span id="sp">自动点击</span></a>
+</body>
+<script type="text/javascript">
+    (()=>{
+        //  兼容IE
+        if(document.all) {
+            document.getElementById("sp").click();
+        }
+        //  兼容其它浏览器
+        else {
+            var e = document.createEvent("MouseEvents");
+            e.initEvent("click", true, true);
+            document.getElementById("sp").dispatchEvent(e);
+        }
+    })();
+</script>
+</html>

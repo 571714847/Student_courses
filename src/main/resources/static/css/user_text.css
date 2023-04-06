@@ -1,0 +1,13 @@
+#form_style {
+    margin-left: 50px;
+    margin-top: 40px;
+    background-color: goldenrod;
+}
+.input_style {
+    border-left-width:0;
+    border-top-width:0;
+    border-right-width:0;
+    border-bottom-width: 1px;
+    border-bottom-color:gray;
+    background-color: white;
+}

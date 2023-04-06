@@ -1,0 +1,52 @@
+body {
+    background-image: url(../images/ocean-3605547_1280.jpg) ;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+button {
+    border-radius: 25px;
+    border:0;
+    width: 250px;
+    height: 40px;
+    background-color: #FF6347;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+}
+#login_box {
+    position: fixed;
+    width:410px;
+    height: 360px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 20px;
+    font-family: "微软雅黑 Light", serif;
+    color: white;
+    margin-top: 10%;
+    margin-left: 35%;
+    text-align:center;
+    padding:1px;
+}
+.style_box{
+    line-height: 70px;
+}
+input {
+    border-radius: 10px;
+    border:0;
+    width: 200px;
+    height: 30px;
+    color: white;
+    font-size: 17px;
+    background-color: rgba(0,0,0,0.2);
+}
+select{
+    border-radius: 10px;
+    border:0;
+    width: 230px;
+    height: 30px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    background-color: rgba(0,0,0,0.2);
+}

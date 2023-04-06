@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Dashboard</title>
+
+  <base th:href="@{/}">
+  <!-- Custom fonts for this template-->
+  <link  th:href="@{static/css/all.css}" rel="stylesheet" type="text/css">
+  <link  th:href="@{static/css/css-Nunito200200i300300i400400i6.css}" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link  th:href="@{static/css/sb-admin-2.min.css}" rel="stylesheet">
+
+  <link rel="stylesheet" th:href="@{/static/css/index.css}">
+  <link type="text/css" rel="stylesheet" th:href="@{/static/css/stu_findAll.css}">
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+
+        <div class="sidebar-brand-text mx-3">My first</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>项目</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" th:href="@{/teacher/getAllTeacher}">我的信息</a>
+            <a class="collapse-item" th:href="@{/teacher/getCheck}">我的班级</a>
+          </div>
+        </div>
+      </li>
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>欢迎你！</span><span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${teacher.tname}"></span>
+                <img class="img-profile rounded-circle" src="../static/picture/60x60.jpg">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        <div style="text-align:center;position: relative">
+
+          <div class="content">
+            <div class="clearfix">
+              <h2 class="title" style="position:relative;float: left;left: 20px">项目</h2>
+            </div>
+            <div class="box">
+              <table class="tb" th:border="1">
+                <thead>
+              <tr>
+                <th>教师编号</th>
+                <th>教师姓名</th>
+                <th>教师课程</th>
+                <th>教师性别</th>
+                <th>班级名称</th>
+              </tr>
+                </thead>
+                <tbody>
+              <tr>
+                <td th:text="${teacher.tid}"></td>
+                <td th:text="${teacher.tname}"></td>
+                <td><a th:text="${teacher.cname}" th:href="@{/teacher/getClasses/} + ${teacher.cname}"></a></td>
+                <td th:text="${teacher.tsex}"></td>
+                <td th:text="${teacher.classname}"></td>
+                <td><a id="open">修改</a></td>
+                <div id="container">
+                  <!-- 背景黑色遮罩 -->
+                  <div id="hidden"></div>
+                  <div id="box">
+                    <form th:action="@{/teacher/updateTeacher/} + ${teacher.tid}" method="post" name="forma" onsubmit="return doValidate()">
+                      <strong id="close">关闭</strong>
+                      <span>输入姓名：<input type="text" name="tname" placeholder="请输入姓名" autocomplete="new-password"></span><br>
+                      <span>选择性别：
+                      <select name="tsex" class="types">
+                        <option value="男" selected>男</option>
+                        <option value="女" >女</option>
+                      </select>
+                      </span><br>
+                      <input type="submit" value="添加" id="login">
+                    </form>
+                  </div>
+                </div>
+              </tr>
+                </tbody>
+              </table>
+            </div>
+            <br style="background-color: #32323a"/>
+            <div>
+
+            </div>
+          </div>
+        </div>
+        <!-- Begin Page Content -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>MY 项目</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/user/loginOut">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script th:src="@{static/js/jquery-1.10.2.js}"></script>
+  <script th:src="@{static/js/bootstrap-4.2.1.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{static/js/jquery.easing.min.js}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script th:src="@{static/js/sb-admin-2.min.js}"></script>
+
+  <!-- Page level plugins -->
+  <script th:src="@{static/js/Chart.min.js}"></script>
+
+  <!-- Page level custom scripts -->
+  <script th:src="@{static/js/chart-area-demo.js}"></script>
+  <script th:src="@{static/js/chart-pie-demo.js}"></script>
+
+  <script th:src="@{static/layui/layui.js}"></script>
+  <script th:src="@{static/js/common.js}"></script>
+  <script>
+    var open = my$('open');
+    var box = my$('box');
+    var hidden = my$('hidden');
+    var close = my$('close');
+    open.onclick = function () {
+      box.style.display = 'flex';
+      hidden.style.display = 'block';
+    }
+    close.onclick = function () {
+      box.style.display = 'none';
+      hidden.style.display = 'none';
+      // 关闭后恢复box到原来的默认位置
+      box.style.top = '200px';
+      box.style.left = '';
+    }
+    box.onmousedown = function (e) {
+      e = e || window.event;
+      // 盒子的位置
+      var x = getPage(e).pageX - box.offsetLeft;
+      var y = getPage(e).pageY - box.offsetTop;
+      document.onmousemove = function (e) {
+        e = e || window.event;
+        box.style.left = getPage(e).pageX - x + 'px';
+        box.style.top = getPage(e).pageY - y + 'px';
+      }
+    }
+    document.onmouseup = function () {
+      document.onmousemove = null;
+    }
+
+    function checkNum(){
+      var Num = parseInt(document.getElementById("account").value)
+      if(isNaN(Num)){
+        alert("请输入纯数字");
+        document.getElementById('account').value = "";
+      }
+    }
+
+    function doValidate() {
+      var phoneNumReg = /^1[3|4|5|7|8]\d{9}$/
+      <!--表示以1开头，第二位可能是3/4/5/7/8等的任意一个，在加上后面的\d表示数字[0-9]的9位，总共加起来11位结束。-->
+      if (!phoneNumReg.test(document.forma.phone.value)) {
+        alert('手机号码有误，请重填，手机号码11位数字，目前支持前两位13、14、15、16、17、18手机号码');
+        document.forma.phone.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                    <table style="width: 500px;height: 300px" th:border="0">
+                        <thead>
+                        <tr>
+                            <td>学生学号</td>
+                            <td th:text="${student.sid}"></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>学生名称</td>
+                            <td th:text="${student.sname}"></td>
+
+                        </tr>
+                        <tr>
+                            <td>学生性别</td>
+                            <td th:text="${student.ssex}"></td>
+                        </tr>
+                        <tr>
+                            <td>学生专业</td>
+                            <td><a th:text="${student.smajor}"></a></td>
+                        </tr>
+                        <tr>
+                            <td>学生班级</td>
+                            <td th:text="${student.classname}"></td>
+                        </tr>
+                        <tr>
+                            <td>缺勤次数</td>
+                            <td th:text="${student.leavenum}"></td>
+                        </tr>
+                        <tr>
+                            <td>学生电话</td>
+                            <td th:text="${student.phone}"></td>
+                        </tr>
+                        <tr>
+                            <td>学生状态</td>
+                            <td th:text="${student.state}"></td>
+                        </tr>
+                        <tr>
+                            <td>请假次数</td>
+                            <td th:text="${student.statenum}"></td>
+                        </tr>
+                        <tr>
+                                 <td>操作</td>
+                            <td>
+                                <a th:href="@{/student/updatesStudent/}">编辑</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

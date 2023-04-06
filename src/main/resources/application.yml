@@ -1,0 +1,30 @@
+#配置数据源(spring boot默认采用HikariDataSource)
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_student?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource #不使用HikariDataSource，使用DruidDataSource
+
+#配置mybatis
+mybatis:
+  type-aliases-package: com.example.student_course.domain
+  configuration:
+    call-setters-on-nulls: true
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/*.xml
+
+#配置日志
+logging:
+  level:
+    edu.uestc.monster.mapper: debug
+
+#配置PageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  row-bounds-with-count: true
+

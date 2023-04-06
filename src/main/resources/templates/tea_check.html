@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                    <table class="tb" th:border="1">
+                        <thead>
+                        <tr>
+                            <th>学生姓名</th>
+                            <th>班级编号</th>
+                            <th>教师编号</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr  th:each="checks: ${pageInfo.list}">
+                            <td th:text="${checks.sname}"></td>
+                            <td th:text="${checks.classid}"></td>
+                            <td><a th:text="${checks.teacherid}"></a></td>
+                            <td>
+                                <a th:href="@{/teacher/YesChecks/} + ${checks.checkid}">同意</a>
+                                <a th:href="@{/teacher/NoChecks/} + ${checks.checkid}">拒绝</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ul class="paging">
+            <li style="float: left; margin-left: 10px;color: black;display: flex">
+                <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,
+                    总 <span th:text="${pageInfo.pages}"></span> 页,
+                    共<span th:text="${pageInfo.total}"></span> 条记录
+                </p>
+                <br>
+                <a th:href="@{/teacher/getCheckHistory}">首页</a>
+                <a th:href="@{/teacher/getCheckHistory(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+                <a th:href="@{/teacher/getCheckHistory(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+                <a th:href="@{/teacher/getCheckHistory(pageNum=${pageInfo.pages})}">尾页</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

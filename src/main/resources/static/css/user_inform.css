@@ -1,0 +1,14 @@
+.box1,ul {
+    display: flex;
+}
+ul li {
+    list-style: none;
+}
+.inform_text {
+    background-color: #fbfbfb;
+    color: black;
+    border-radius: 5px;
+}
+.box {
+    margin-left: 100px;
+}

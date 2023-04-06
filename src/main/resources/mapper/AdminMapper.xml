@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.student_course.mapper.AdminMapper">
+    <!-- 管理员用户对用户登录表的增删改查 -->
+    <insert id="insertUser">
+        INSERT INTO `user` ( `account`, `type1`, `password1`) VALUES ( #{account}, #{type1}, #{password1})
+    </insert>
+    <delete id="delUser">
+        delete from user where account= #{account}
+    </delete>
+    <update id="Update">
+        update user set type1=#{type1},password1=#{password1} where account=#{account}
+    </update>
+
+    <select id="selectList" resultType="com.example.student_course.domain.User">
+        select * from user
+    </select>
+    <select id="selectUser" resultType="com.example.student_course.domain.User">
+        select * from user where account=#{id}
+    </select>
+
+
+    <!-- 管理员用户对课程表的增删改查 -->
+    <select id="selectListCourse" resultType="com.example.student_course.domain.Course">
+        select * from course
+    </select>
+    <select id="selectCourse" resultType="com.example.student_course.domain.Course">
+        select * from course where cid= #{cid}
+    </select>
+    <insert id="insertCourse">
+        INSERT INTO `course` (`cid`,`cname`,`cleave`) VALUES ( #{cid}, #{cname},#{cleave})
+    </insert>
+    <delete id="delCourse">
+        delete from course where cid= #{cid}
+    </delete>
+    <update id="UpdateCourse">
+        update course set cname=#{cname},cleave=#{cleave} where cid=#{cid}
+    </update>
+
+    <!-- 管理员对教师表的操作 -->
+    <select id="selectListTeacher" resultType="com.example.student_course.domain.Teacher">
+        SELECT t.tid,t.tname,t.tsex,c.cname,t.classid FROM teacher t LEFT JOIN course c  ON t.course1=c.cid
+    </select>
+
+    <insert id="insertTecher">
+        INSERT INTO `teacher` (`tid`,`tname`,`tsex`,`course1`,`classid`) VALUES (#{tid},#{tname},#{tsex},(SELECT cid FROM course WHERE cname=#{cname}),#{classid})
+    </insert>
+    <delete id="delTeacher">
+        delete from teacher where tid= #{tid}
+    </delete>
+    <select id="selectTeacher" resultType="com.example.student_course.domain.Teacher">
+        select * from teacher where tid= #{tid}
+    </select>
+
+    <update id="UpdateTeacher">
+        update teacher set tname=#{tname},tsex=#{tsex},course1=(SELECT cid FROM course WHERE cname=#{cname}),classid=#{classid} where tid=#{tid}
+    </update>
+
+    <!-- 对班级表操作-->
+    <select id="selectListClasses" resultType="com.example.student_course.domain.Classes">
+        select * from class
+    </select>
+    <select id="getClassesCourse" resultType="com.example.student_course.domain.Classes">
+        select * from class where classid=#{classid}
+    </select>
+    <insert id="insertClasses">
+        INSERT INTO `class` (`classid`,`classname`,`grade`,`major`,
+                             `mcourse1`,`mcourse2`,`mcourse3`,`mcourse4`,
+                             `tcourse1`,`tcourse2`,`tcourse3`,`tcourse4`,
+                             `wcourse1`,`wcourse2`,`wcourse3`,`wcourse4`,
+                             `thcourse1`,`thcourse2`,`thcourse3`,`thcourse4`,
+                             `fcourse1`,`fcourse2`,`fcourse3`,`fcourse4`)
+         VALUES (#{classid},#{classname},#{grade},#{major},
+                 #{mcourse1},#{mcourse2},#{mcourse3},#{mcourse4},
+                 #{tcourse1},#{tcourse2},#{tcourse3},#{tcourse4},
+                 #{wcourse1},#{wcourse2},#{wcourse3},#{wcourse4},
+                 #{thcourse1},#{thcourse2},#{thcourse3},#{thcourse4},
+                 #{fcourse1},#{fcourse2},#{fcourse3},#{fcourse4}
+                 )
+    </insert>
+
+    <delete id="delClasses">
+        delete from class where classid= #{classid}
+    </delete>
+
+    <select id="selectClasses" resultType="com.example.student_course.domain.Classes">
+        select * from class where classid= #{classid}
+    </select>
+
+    <update id="UpdateClasses">
+        update class set classid=#{classid},classname=#{classname},grade=#{grade},major=#{major},
+                         mcourse1=#{mcourse1},mcourse2=#{mcourse2},mcourse3=#{mcourse3},mcourse4=#{mcourse4},
+                         tcourse1=#{tcourse1},tcourse2=#{tcourse2},tcourse3=#{tcourse3},tcourse4=#{tcourse4},
+                         wcourse1=#{tcourse1},wcourse2=#{tcourse2},wcourse3=#{tcourse3},wcourse4=#{tcourse4},
+                         thcourse1=#{tcourse1},thcourse2=#{tcourse2},thcourse3=#{tcourse3},thcourse4=#{tcourse4},
+                         fcourse1=#{tcourse1},fcourse2=#{tcourse2},fcourse3=#{tcourse3},fcourse4=#{tcourse4} where classid=#{classid}
+    </update>
+
+    <!-- 学生-->
+    <select id="selectListStudent" resultType="com.example.student_course.domain.Student">
+        SELECT s.sid,s.sname,s.ssex,s.smajor,c.classname,s.cardid,s.leavenum,s.phone FROM student s left join class c on s.sclass=c.classid
+    </select>
+
+    <insert id="insertStudent">
+        INSERT INTO `student` (`sid`,`sname`,`ssex`,`smajor`,`sclass`,`cardid`,`leavenum`,`phone`)
+        VALUES (#{sid},#{sname},#{ssex},#{smajor},(SELECT classid FROM class WHERE classname=#{classname}),#{cardid},#{leavenum},#{phone})
+    </insert>
+    <delete id="delStudent">
+        delete from student where sid= #{sid}
+    </delete>
+
+    <select id="selectStudent" resultType="com.example.student_course.domain.Student">
+        select * from student where sid= #{sid}
+    </select>
+
+    <update id="UpdateStudent">
+        update student set sname=#{sname},ssex=#{ssex},smajor=#{smajor},
+            sclass=(SELECT classid FROM class WHERE classname=#{classname}),cardid=#{cardid},leavenum=#{leavenum},phone=#{phone} where sid=#{sid}
+    </update>
+
+    <select id="findAllStudent" resultType="com.example.student_course.domain.Student">
+        SELECT * FROM student WHERE sid LIKE concat(#{sid},'%') AND sname LIKE concat(#{sname},'%') AND smajor LIKE concat(#{smajor},'%')
+    </select>
+    <select id="findAllTea" resultType="com.example.student_course.domain.Teacher">
+        SELECT t.tid,t.tname,t.tsex,c.cname,t.classid FROM teacher t LEFT JOIN course c  ON t.course1=c.cid
+        WHERE t.tid LIKE concat(#{tid},'%') AND t.tname LIKE concat(#{tname},'%')
+    </select>
+    <select id="findAllCou" resultType="com.example.student_course.domain.Course">
+        SELECT * FROM course WHERE cid LIKE concat(#{cid},'%') AND cname LIKE concat(#{cname},'%')
+    </select>
+    <select id="findAllUser" resultType="com.example.student_course.domain.User">
+        SELECT * FROM user WHERE account LIKE concat(#{account},'%') AND type1 LIKE concat(#{type1},'%')
+    </select>
+</mapper>

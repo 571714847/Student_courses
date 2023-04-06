@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <base th:href="@{/}">
+  <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_text.css}">
+  <title>Course information update</title>
+</head>
+<body>
+  <div id="form_style">
+  <form th:action="@{/admin/updateClasses/} + ${update.classid}" method="post">
+      <div>
+          <label>班级编号：</label>
+          <label>
+              <input onkeyup="value=value.replace(/[^(\d)]/g,'')" onblur="checkNum()" class="input_style" type="text" name="classid" autocomplete="new-password">
+          </label>
+          <label>班级名称：</label>
+          <label>
+              <input type="text" name="classname" class="input_style" autocomplete="new-password">
+          </label>
+          <label>班级年级：</label>
+          <label>
+              <input type="text" name="grade" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>班级专业：</label>
+          <label>
+              <input type="text" name="major" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周一一二节：</label>
+          <label>
+              <input type="text" name="mcourse1" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周一三四节：</label>
+          <label>
+              <input type="text" name="mcourse2" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周一五六节：</label>
+          <label>
+              <input type="text" name="mcourse3" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周一七八节：</label>
+          <label>
+              <input type="text" name="mcourse4" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周二一二节：</label>
+          <label>
+              <input type="text" name="tcourse1" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周二三四节：</label>
+          <label>
+              <input type="text" name="tcourse2" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周二五六节：</label>
+          <label>
+              <input type="text" name="tcourse3" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周二七八节：</label>
+          <label>
+              <input type="text" name="tcourse4" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周三一二节：</label>
+          <label>
+              <input type="text" name="wcourse1" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周三三四节：</label>
+          <label>
+              <input type="text" name="wcourse2" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周三五六节：</label>
+          <label>
+              <input type="text" name="wcourse3" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周三七八节：</label>
+          <label>
+              <input type="text" name="wcourse4" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周四一二节：</label>
+          <label>
+              <input type="text" name="thcourse1" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周四三四节：</label>
+          <label>
+              <input type="text" name="thcourse2" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周四五六节：</label>
+          <label>
+              <input type="text" name="thcourse3" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周四七八节：</label>
+          <label>
+              <input type="text" name="thcourse4" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周五一二节：</label>
+          <label>
+              <input type="text" name="fcourse1" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <label>周五三四节：</label>
+          <label>
+              <input type="text" name="fcourse2" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周五五六节：</label>
+          <label>
+              <input type="text" name="fcourse3" class="input_style" autocomplete="new-password">
+          </label>
+          <label>周五七八节：</label>
+          <label>
+              <input type="text" name="fcourse4" class="input_style" autocomplete="new-password">
+          </label>
+      </div>
+      <div>
+          <button type="submit">提交</button>
+          <button type="reset">重置</button>
+      </div>
+  </form>
+  </div>
+</body>
+</html>

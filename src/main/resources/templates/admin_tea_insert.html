@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_text.css}">
+    <title>Teacher information insert</title>
+</head>
+<body>
+<div id="form_style">
+    <form action="/admin/addTeacher" method="post">
+        <div>
+            <label>工号：</label>
+            <label>
+                <input onkeyup="value=value.replace(/[^(\d)]/g,'')" class="input_style" onblur="checkNum()" type="text" name="tid" autocomplete="new-password">
+            </label>
+            <label>姓名：</label>
+            <label>
+                <input type="text" name="tname" class="input_style" autocomplete="new-password">
+            </label>
+            <label>性别：</label>
+            <label>
+                <input type="text" name="tsex" class="input_style" autocomplete="new-password">
+            </label>
+        </div>
+        <div>
+            <label>课程：</label>
+            <label>
+                <input type="text" name="cname" class="input_style" autocomplete="new-password">
+            </label>
+            <label>密码：</label>
+            <label>
+                <input type="text" name="tpwd" class="input_style" autocomplete="new-password">
+            </label>
+            <label>管理班级：</label>
+            <label>
+                <input type="text" name="classid" class="input_style" autocomplete="new-password">
+            </label>
+        </div>
+        <div>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </div>
+    </form>
+</div>
+<script>
+    function checkNum(){
+        var Num = parseInt(document.getElementById("account").value)
+        if(isNaN(Num)){
+            alert("请输入纯数字");
+            document.getElementById('account').value = "";
+        }
+    }
+</script>
+</body>
+</html>

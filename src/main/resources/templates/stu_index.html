@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生操作</title>
+    <base th:href="@{/}">
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/index.css}"/>
+    <script type="text/javascript" th:src="@{/static/scripts/jquery-3.6.0.js}" th:inline="none"></script>
+    <script type="text/javascript" th:src="@{/static/scripts/index-a.js}" th:inline="none"></script>
+    <script type="text/javascript" th:src="@{/static/scripts/jquery-3.6.1.min.js}" th:inline="none"></script>
+    <script type="text/javascript" th:src="@{/static/scripts/admin_index.js}" th:inline="none"></script>
+</head>
+<body>
+<form action="" method="post">
+    <div class="top"></div>
+    <!--顶部导航开始-->
+    <div id="header">
+        <div class="logo">学生考勤系统</div>
+        <div class="navigation">
+            <ul>
+                <li>欢迎您！</li>
+                <li>
+                    <a th:text="${student.sname}" target="mains"></a>
+                </li>
+                <li><a th:href="@{/user/loginOut}">退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--顶部导航结束-->
+    <div id="content">
+        <!--侧边栏开始-->
+        <div class="left_menu">
+            <ul id="nav_dot">
+                <li>
+                    <h4 class="M10"><span></span>学生管理</h4>
+                    <div class="list-item none">
+                        <a id="teacher-a1" th:href="@{/student/getAllStudent}" target="mains">
+                            学生信息
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <h4 class="M5"><span></span>班级管理</h4>
+                    <div class="list-item none">
+                        <a id="class-a1" th:href="@{/student/getAllSClass}" target="mains">
+                            班级信息
+                        </a>
+                        <a id="class-a2" th:href="@{/student/getClassCourse}" target="mains">
+                            班级课程
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--侧边栏结束-->
+        <div class="m-right">
+            <div class="right-nav">
+                <ul>
+                    <li style="margin-left:25px;">您当前的位置：</li>
+                    <li>
+                        <a th:href="@{/student/getAllTeacher}" th:target="mains">系统主页</a>
+                    </li>
+                    <li>
+                        <p id="p1-1"></p>
+                    </li>
+                    <li>
+                        <p id="p1"></p>
+                    </li>
+                    <li>
+                        <P id="p2-1"></P>
+                    </li>
+                    <li>
+                        <p id="p2"></p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 内容 -->
+            <div class="main">
+                <iframe name="mains" style="width:1050px; height:1000px;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="bottom"></div>
+    <!--页面底部-->
+    <div id="footer">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.student_course.mapper.UserMapper">
+
+    <insert id="save">
+
+    </insert>
+
+    <select id="findByUname" resultType="com.example.student_course.domain.User">
+        select * from user where account = #{account}
+    </select>
+    <select id="findByUnameAndPassword" resultType="com.example.student_course.domain.User">
+        select * from user where account = #{account} and password1 = #{password1}
+    </select>
+</mapper>

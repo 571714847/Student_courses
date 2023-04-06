@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.student_course.mapper.TeacherMapper">
+    <select id="selectTeacher" resultType="com.example.student_course.domain.Teacher">
+        SELECT t.tid,t.tname,t.tsex,c.cname,cl.classname
+        FROM teacher t
+                 LEFT JOIN course c ON t.course1=c.cid
+                 LEFT JOIN class cl
+                           ON cl.classid=t.classid
+        WHERE t.tid=#{tid}
+    </select>
+    <select id="selectClasses" resultType="com.example.student_course.domain.Classes">
+        SELECT distinct * FROM class WHERE mcourse1=#{cname} OR mcourse2=#{cname} OR mcourse3=#{cname} OR mcourse4=#{cname}
+                               OR tcourse1=#{cname} OR tcourse2=#{cname} OR tcourse3=#{cname} OR tcourse4=#{cname}
+                               OR wcourse1=#{cname} OR wcourse2=#{cname} OR wcourse3=#{cname} OR wcourse4=#{cname}
+                               OR thcourse1=#{cname} OR thcourse2=#{cname} OR thcourse3=#{cname} OR thcourse4=#{cname}
+                               OR fcourse1=#{cname} OR fcourse2=#{cname} OR fcourse3=#{cname} OR fcourse4=#{cname}
+    </select>
+    <update id="UpdateTeacher">
+        update teacher set tname=#{tname},tsex=#{tsex} where tid=#{tid}
+    </update>
+
+    <select id="selectChecks" resultType="com.example.student_course.domain.Checks">
+        SELECT c.checkid,c.teacherid,s.sname,c.classid FROM  checks c JOIN student s ON c.studentid=s.sid WHERE teacherid=#{teacherid}
+    </select>
+    <select id="selectStudent" resultType="com.example.student_course.domain.Student">
+        select sid,sname,leavenum,phone from student where sclass=#{classid}
+    </select>
+    <select id="selectCheck" resultType="com.example.student_course.domain.Checks">
+        select studentid,teacherid,classid from checks where checkid=#{checkid}
+    </select>
+    <select id="selectCheckes" resultType="com.example.student_course.domain.Checks">
+        SELECT c.checksid checkid,c.teacherid,s.sname,c.classid FROM  temp_history c JOIN student s ON c.studentid=s.sid WHERE teacherid=#{teacherid}
+    </select>
+
+    <insert id="insertHistory">
+        insert into `temp_history` ( `studentid`, `teacherid`, `classid`) values (#{studentid}, #{teacherid}, #{classid})
+    </insert>
+    <select id="selectstudentid" resultType="java.lang.Integer">
+        select studentid from temp_history where checksid=#{checkid}
+    </select>
+    <update id="updateChecks">
+        UPDATE student SET state='正常',state_num=state_num+1 WHERE sid=#{studentid}
+    </update>
+    <delete id="delHistory">
+        delete
+        from temp_history
+        where studentid=#{studentid};
+    </delete>
+    <update id="YesChecks">
+        UPDATE student SET state='请假',state_num=state_num+1 WHERE sid=(SELECT studentid FROM checks WHERE checkid=#{checkid})
+    </update>
+
+    <delete id="deleChecks">
+        delete from checks where checkid= #{checkid}
+    </delete>
+    <delete id="Begintemp">
+        delete from temp_tb_name where classid=#{classid}
+    </delete>
+
+    <delete id="delChecks">
+        delete from temp_tb_name where classid= #{classid}
+    </delete>
+
+    <update id="Endtemp">
+        UPDATE student SET leavenum = leavenum + 1 WHERE sid NOT IN
+               (SELECT a.sid FROM (SELECT s.sid FROM temp_tb_name t INNER JOIN student s ON t.sid=s.sid) a) AND state='正常'
+    </update>
+</mapper>

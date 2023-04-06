@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_text.css}">
+    <title>Course information insert</title>
+</head>
+<body>
+<div id="form_style">
+    <form action="/admin/addStudent" method="post">
+        <div>
+            <label>学生编号：</label>
+            <label>
+                <input onkeyup="value=value.replace(/[^(\d)]/g,'')" onblur="checkNum()" class="input_style" type="text" name="sid" autocomplete="new-password">
+            </label>
+            <label>学生名称：</label>
+            <label>
+                <input type="text" name="sname" class="input_style" autocomplete="new-password">
+            </label>
+            <label>学生性别：</label>
+            <label>
+                <input type="text" name="ssex" class="input_style" autocomplete="new-password">
+            </label>
+        </div>
+        <div>
+            <label>学生班级：</label>
+            <label>
+                <input type="text" name="classname" class="input_style" autocomplete="new-password">
+            </label>
+            <label>学生专业：</label>
+            <label>
+                <input type="text" name="smajor" class="input_style" autocomplete="new-password">
+            </label>
+            <label>学生卡号：</label>
+            <label>
+                <input type="text" name="cardid" class="input_style" autocomplete="new-password">
+            </label>
+        </div>
+        <div>
+            <label>缺勤次数：</label>
+            <label>
+                <input type="text" name="leavenum" class="input_style" autocomplete="new-password">
+            </label>
+            <label>学生电话：</label>
+            <label>
+                <input type="text" name="phone" class="input_style" autocomplete="new-password">
+            </label>
+            <label>学生密码：</label>
+            <label>
+                <input type="text" name="spwd" class="input_style" autocomplete="new-password">
+            </label>
+        </div>
+        <div>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </div>
+    </form>
+</div>
+<script>
+    function checkNum(){
+        var Num = parseInt(document.getElementById("account").value)
+        if(isNaN(Num)){
+            alert("请输入纯数字");
+            document.getElementById('account').value = "";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <base th:href="@{/}">
+    <title>all Student information</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/static/css/user_findAll.css}">
+    <script type="text/javascript" th:src="@{/static/scripts/deleteAll.js}" th:inline="none"></script>
+</head>
+<body>
+    <div>
+        <div class="box">
+            <div style="margin-bottom: 10px">
+            </div>
+            <div>
+                    <table style="width: 500px;height: 300px" th:border="0">
+                        <thead>
+                        <tr>
+                            <td>教师编号</td>
+                            <td th:text="${course.tid}"></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>课程名称</td>
+                            <td th:text="${course.cname}"></td>
+                        </tr>
+                        <tr>
+                            <td>课程老师</td>
+                            <td th:text="${course.tname}"></td>
+                        </tr>
+                        <tr>
+                            <td>课程学分</td>
+                            <td th:text="${course.cleave}"></td>
+                        </tr>
+                        <tr>
+                                 <td>操作</td>
+                            <td>
+                                <a th:href="@{/student/addtemp/}">签到</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

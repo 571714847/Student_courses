@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.student_course.mapper.StudentMapper">
+    <select id="selectStudent" resultType="com.example.student_course.domain.Student">
+        SELECT s.sid,s.sname,s.ssex,s.smajor,c.classname,s.cardid,s.leavenum,s.phone,s.state,s.state_num FROM student s,class c where s.sclass=c.classid and sid= #{sid}
+    </select>
+
+    <update id="UpdateStudent">
+        update student set sname=#{sname},ssex=#{ssex},phone=#{phone} where sid=#{sid}
+    </update>
+
+    <select id="selectClass" resultType="com.example.student_course.domain.Classes">
+        SELECT * FROM class WHERE classid=(SELECT sclass FROM student WHERE sid=#{sid})
+    </select>
+    <select id="selectCourse" resultType="com.example.student_course.domain.Teacher">
+        SELECT t.tid,c.cname,t.tname,c.cleave FROM teacher t JOIN course c ON t.course1=c.cid WHERE c.cname=#{cname};
+    </select>
+
+    <!--请假-->
+    <insert id="insertCheck">
+        INSERT INTO `checks` (`teacherid`,`studentid`,`classid`)
+        VALUES ((  SELECT tid FROM teacher WHERE classid=#{classid}),#{sid},#{classid})
+    </insert>
+
+    <select id="selectState" resultType="java.lang.Integer">
+        SELECT sid FROM student WHERE state='请假' AND sid=#{sid}
+    </select>
+    <select id="selectcheck" resultType="java.lang.Integer">
+        SELECT studentid FROM checks WHERE studentid=#{studentid}
+    </select>
+
+
+    <update id="deleteCheck">
+        update student set state='正常' where sid=#{sid}
+    </update>
+
+    <insert id="addtemp">
+        insert into temp_tb_name (classid, sname,sid) VALUES (#{classid},(select sname FROM student where sid=#{sid}),#{sid})
+    </insert>
+</mapper>

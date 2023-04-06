@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <base th:href="@{/}">
+  <link type="text/css" rel="stylesheet" th:href="@{/css/user_text.css}">
+  <title>Student information update</title>
+</head>
+<body>
+  <div id="form_style">
+      <form th:action="@{/teacher/updateTeacher/} + ${update.tid}" method="post">
+          <input type="hidden" name="cid" th:value="${update.tid}">
+          <div>
+              <label>姓名：</label>
+              <label>
+                  <input type="text" name="tname" class="input_style" placeholder="请输入姓名" autocomplete="new-password">
+              </label>
+              <label>性别：</label>
+              <label>
+                  <input type="text" name="tsex" class="input_style" placeholder="请输入教师性别" autocomplete="new-password">
+              </label>
+          </div>
+          <div>
+              <button type="submit">提交</button>
+              <button type="reset">重置</button>
+          </div>
+      </form>
+  </div>
+</body>
+</html>
